@@ -9,7 +9,6 @@ collection.allow({
   remove: () => false,
 })
 
-// Public API
 Meteor.methods({
   'star-ratings.rate': (documentId, amount) => {
     check(documentId, String);
