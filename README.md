@@ -9,7 +9,7 @@ It let's users rate your page, blog posts or anything else based on the given `i
 </div>
 ```
 
-See [GUIDE.md]() for more detailed information to the Javascript API.
+See [GUIDE.md](https://github.com/ARKHAM-Enterprises/meteor-stars-rating-ui/blob/master/GUIDE.md) for more detailed information to the Javascript API.
 
 ## How to install
 
