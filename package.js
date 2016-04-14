@@ -22,10 +22,3 @@ Package.onUse(function(api) {
   api.mainModule('src/server/main.js', 'server');
   api.mainModule('src/client/main.js', 'client');
 });
-
-Package.onTest(function(api) {
-  api.use('ecmascript');
-  api.use('tinytest');
-  api.use('stars-rating-ui');
-  api.mainModule('stars-rating-ui-tests.js');
-});
