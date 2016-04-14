@@ -1,0 +1,7 @@
+<template name="starsRatingBox">
+  <div class="stars-rating-box">
+    {{#let ratingAmount=rating.amount}}
+      {{> starsRating rating=ratingAmount id=ratingId class=class mutable=canRate}}
+    {{/let}}
+  </div>
+</template>

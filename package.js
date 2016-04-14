@@ -1,0 +1,31 @@
+Package.describe({
+  name: 'arkham:stars-rating-ui',
+  version: '0.1.0',
+  summary: 'User based stars rating',
+  git: '',
+  documentation: 'README.md'
+});
+
+Package.onUse(function(api) {
+  api.versionsFrom('1.3.1');
+  api.use([
+    'ecmascript',
+    'underscore',
+    'templating',
+    'mongo',
+    'check',
+    'accounts-base',
+    'barbatus:stars-rating@1.0.7'
+  ]);
+
+  api.addFiles('src/client/template.html', 'client');
+  api.mainModule('src/server/main.js', 'server');
+  api.mainModule('src/client/main.js', 'client');
+});
+
+Package.onTest(function(api) {
+  api.use('ecmascript');
+  api.use('tinytest');
+  api.use('stars-rating-ui');
+  api.mainModule('stars-rating-ui-tests.js');
+});
