@@ -1,6 +1,6 @@
 Package.describe({
   name: 'arkham:stars-rating-ui',
-  version: '0.2.1',
+  version: '0.2.2',
   summary: 'User based stars rating',
   git: 'https://github.com/ARKHAM-Enterprises/meteor-stars-rating-ui',
   documentation: 'README.md'

@@ -13,16 +13,16 @@ Template.starsRatingBox.onCreated(() => {
   Meteor.subscribe('star-ratings.rating', id)
 })
 
+const canRateOnComponent = data => service.config().canRate() && !data.viewOnly
+
 Template.starsRatingBox.helpers({
-  canRate: () => service.config().canRate(),
-  ratingId: function () {
-    return getRatingId(this.id)
-  },
+  canRate: () => canRateOnComponent(Template.currentData()),
+  ratingId: () => getRatingId(Template.currentData().id),
   rating: function () {
     const id = this.id
     const ratingForUser = service.getRatingForCurrentUser(id)
 
-    if (!ratingForUser) {
+    if (!ratingForUser || Template.currentData().viewOnly) {
       return {
         amount: service.getAverageRating(id).amount
       }
@@ -36,7 +36,7 @@ Template.starsRatingBox.helpers({
 
 Template.starsRatingBox.events({
   'click .stars-rating-box': () => {
-    if (service.config().canRate()) {
+    if (canRateOnComponent(Template.currentData())) {
       const docId = Template.currentData().id
       service.rate(docId, $(`#${getRatingId(docId)}`).find('.current-rating').length)
     }

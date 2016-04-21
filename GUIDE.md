@@ -24,9 +24,21 @@ Tracker.autorun(function () {
 starRatingService.rate('someId', 4);
 ```
 
+## Template parameters
+
+You can customize the star rating box by providing other parameters than the required `id`.
+
+```javascript
+{{> starsRatingBox 
+    id=""
+    viewOnly=true
+}}
+```
+
+
 ## Configuration
 
-You can configure who can rate and how the userId is retrieved for your users with following code.
+You can configure who can rate and how the userId is retrieved for your users.
 
 ```js
 // On Server or Client
