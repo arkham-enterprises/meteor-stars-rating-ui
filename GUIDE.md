@@ -23,3 +23,20 @@ Tracker.autorun(function () {
 // Rate as your currently logged in user
 starRatingService.rate('someId', 4);
 ```
+
+## Configuration
+
+You can configure who can rate and how the userId is retrieved for your users with following code.
+
+```js
+// On Server or Client
+import { starRatingService } from 'meteor/arkham:stars-rating-ui';
+
+starRatingService.config({
+  canRate: () => { /* return true or false */ },
+  getUserId: () => { /* return userId as string */ }
+});
+
+// Call canRate somewhere in your app code
+starRatingSerivce.config().canRate();
+```

@@ -1,9 +1,14 @@
 import collection from './collection'
 
+let currentConfig = {
+  canRate: () => Meteor.userId(),
+  getUserId: () => Meteor.userId()
+}
+
 const service = {
   rate: (...args) => Meteor.call('star-ratings.rate', ...args),
   getRating: (userId, documentId) => collection.findOne({ userId, documentId }),
-  getRatingForCurrentUser: (documentId) => service.getRating(Meteor.userId(), documentId),
+  getRatingForCurrentUser: (documentId) => service.getRating(service.config().getUserId(), documentId),
   getRatings: (documentId) => collection.find({ documentId }).fetch(),
   getAverageRating: (documentId) => {
     const ratings = service.getRatings(documentId)
@@ -21,6 +26,13 @@ const service = {
     }
 
     return { amount: 0 }
+  },
+  config(newConfig) {
+    if (!newConfig) {
+      return currentConfig
+    }
+
+    currentConfig = Object.assign({}, currentConfig, newConfig)
   }
 }
 

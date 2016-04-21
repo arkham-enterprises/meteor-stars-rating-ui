@@ -14,7 +14,7 @@ Template.starsRatingBox.onCreated(() => {
 })
 
 Template.starsRatingBox.helpers({
-  canRate: () => Meteor.userId(),
+  canRate: () => service.config().canRate(),
   ratingId: function () {
     return getRatingId(this.id)
   },
