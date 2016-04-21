@@ -35,10 +35,11 @@ Template.starsRatingBox.helpers({
 })
 
 Template.starsRatingBox.events({
-  'click .stars-rating-box': (event) => {
-    const docId = Template.currentData().id
-
-    service.rate(docId, $(`#${getRatingId(docId)}`).find('.current-rating').length)
+  'click .stars-rating-box': () => {
+    if (service.config().canRate()) {
+      const docId = Template.currentData().id
+      service.rate(docId, $(`#${getRatingId(docId)}`).find('.current-rating').length)
+    }
   }
 })
 
