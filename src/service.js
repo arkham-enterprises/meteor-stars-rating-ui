@@ -33,7 +33,8 @@ const service = {
     }
 
     currentConfig = Object.assign({}, currentConfig, newConfig)
-  }
+  },
+  _collection: collection
 }
 
 export default service
