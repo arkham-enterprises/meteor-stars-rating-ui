@@ -29,9 +29,10 @@ starRatingService.rate('someId', 4);
 You can customize the star rating box by providing other parameters than the required `id`.
 
 ```javascript
-{{> starsRatingBox 
+{{> starsRatingBox
     id=""
     viewOnly=true
+    stars=0
 }}
 ```
 

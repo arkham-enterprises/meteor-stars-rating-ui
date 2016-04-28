@@ -19,6 +19,12 @@ Template.starsRatingBox.helpers({
   canRate: () => canRateOnComponent(Template.currentData()),
   ratingId: () => getRatingId(Template.currentData().id),
   rating: function () {
+    if (_.isNumber(this.stars)) {
+      return {
+        amount: this.stars
+      }
+    }
+
     const id = this.id
     const ratingForUser = service.getRatingForCurrentUser(id)
 
