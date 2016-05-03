@@ -26,6 +26,15 @@ Template.starsRatingBox.helpers({
     }
 
     const id = this.id
+
+    if (Template.currentData().userId) {
+      const userId = Template.currentData().userId
+
+      return {
+        amount: service.getRating(userId, id).amount
+      }
+    }
+
     const ratingForUser = service.getRatingForCurrentUser(id)
 
     if (!ratingForUser || Template.currentData().viewOnly) {
