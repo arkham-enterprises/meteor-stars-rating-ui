@@ -35,6 +35,20 @@ Meteor.methods({
         upsert: true
       })
     }
+  },
+  'star-ratings.remove-rating': (documentId) => {
+    if (!service.config().canRate()) {
+      throw new Error('Not allowed to rate');
+    }
+
+    const userId = service.config().getUserId()
+
+    if (userId) {
+      collection.remove({
+        documentId,
+        userId
+      })
+    }
   }
 })
 

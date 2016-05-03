@@ -7,6 +7,7 @@ let currentConfig = {
 
 const service = {
   rate: (...args) => Meteor.call('star-ratings.rate', ...args),
+  removeRating: (...args) => Meteor.call('star-ratings.remove-rating', ...args),
   getRating: (userId, documentId) => collection.findOne({ userId, documentId }),
   getRatingForCurrentUser: (documentId) => service.getRating(service.config().getUserId(), documentId),
   getRatings: (documentId) => collection.find({ documentId }).fetch(),
