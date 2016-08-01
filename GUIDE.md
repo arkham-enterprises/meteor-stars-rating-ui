@@ -51,5 +51,5 @@ starRatingService.config({
 });
 
 // Call canRate somewhere in your app code
-starRatingSerivce.config().canRate();
+starRatingService.config().canRate();
 ```
